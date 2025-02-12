@@ -25,10 +25,10 @@ const router = createBrowserRouter([
       { path: "/users", element: <Users /> },
       { path: "/settings", element: <Settings /> },
       { path: "/account", element: <Account /> },
-      { path: "/login", element: <Login /> },
-      { path: "*", element: <PageNotFound /> },
     ],
   },
+  { path: "/login", element: <Login /> },
+  { path: "*", element: <PageNotFound /> },
 ]);
 
 function App() {
