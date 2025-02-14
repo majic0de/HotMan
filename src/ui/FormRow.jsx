@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
 const StyledFormRow = styled.div`
   display: grid;
