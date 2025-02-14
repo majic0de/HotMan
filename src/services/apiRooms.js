@@ -10,3 +10,17 @@ export async function getRooms() {
 
   return data;
 }
+
+export async function createRoom(newRoom) {
+  const { data, error } = await supabase
+    .from("rooms")
+    .insert([newRoom])
+    .select();
+
+  if (error) {
+    console.error("Error creating rooms", error);
+    throw new Error("Room could not be ceated");
+  }
+
+  return data;
+}
