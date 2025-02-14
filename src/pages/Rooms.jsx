@@ -3,6 +3,7 @@ import VStack from "../ui/VStack";
 import HStack from "../ui/HStack";
 
 import RoomsGrid from "../features/rooms/RoomsGrid";
+import AddRoom from "../features/rooms/AddRoom";
 
 const Rooms = () => {
   return (
@@ -13,6 +14,7 @@ const Rooms = () => {
       </HStack>
       <VStack>
         <RoomsGrid />
+        <AddRoom />
       </VStack>
     </>
   );
