@@ -11,7 +11,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createRoom } from "../../services/apiRooms";
 
 const CreateRoomForm = () => {
-  const { register, handleSubmit, errors, getValues, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+    reset,
+  } = useForm();
 
   const queryClient = useQueryClient();
 
@@ -46,8 +52,8 @@ const CreateRoomForm = () => {
       <FormRow label="Maximum capacity" error={errors?.maxCapacity?.message}>
         <Input
           type="number"
-          id="maxCapicity"
-          {...register("maxCapicity", {
+          id="maxCapacity"
+          {...register("maxCapacity", {
             required: "Maximum capacity is required",
             min: {
               value: 1,
@@ -96,13 +102,26 @@ const CreateRoomForm = () => {
       </FormRow>
 
       <FormRow label="Room photo" error={errors?.Discount?.message}>
-        <FileInput id="image" accept="image/*" />
+        <FileInput
+          id="image"
+          type="file"
+          accept="image/*"
+          {...register("image", {
+            required: "Room photo is required",
+          })}
+        />
       </FormRow>
+
       <FormRow>
-        <Button type="reset" variation="secondary">
+        <Button size="medium" type="reset" variation="secondary">
           Cancel
         </Button>
-        <Button disabled={isCreating} variation="primary" type="submit">
+        <Button
+          size="medium"
+          disabled={isCreating}
+          variation="primary"
+          type="submit"
+        >
           {isCreating ? "Is creating" : "Add room"}
         </Button>
       </FormRow>
