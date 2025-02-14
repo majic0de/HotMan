@@ -1,15 +1,20 @@
-import { useEffect } from "react";
-import { getRooms } from "../services/apiRooms";
+import Heading from "../ui/Heading";
+import VStack from "../ui/VStack";
+import HStack from "../ui/HStack";
+
+import RoomsGrid from "../features/rooms/RoomsGrid";
 
 const Rooms = () => {
-  useEffect(() => {
-    getRooms().then((data) => console.log(data));
-  }, []);
-
   return (
-    <div>
-      <h1>Rooms</h1>
-    </div>
+    <>
+      <HStack>
+        <Heading as="h1">All Rooms</Heading>
+        <p>Filter / Sort</p>
+      </HStack>
+      <VStack>
+        <RoomsGrid />
+      </VStack>
+    </>
   );
 };
 
