@@ -7,7 +7,7 @@ const useRooms = () => {
     data: rooms,
     error,
   } = useQuery({
-    queryKey: ["room"],
+    queryKey: ["rooms"],
     queryFn: getRooms,
   });
 

@@ -34,7 +34,7 @@ const CreateRoomForm = () => {
   });
 
   function onSubmit(data) {
-    mutate(data);
+    mutate({ ...data, image: data.image[0] });
   }
 
   return (
@@ -74,11 +74,11 @@ const CreateRoomForm = () => {
         />
       </FormRow>
 
-      <FormRow label="Discount" error={errors?.Discount?.message}>
+      <FormRow label="Discount" error={errors?.discount?.message}>
         <Input
           type="text"
           id="discount"
-          {...register("Discount", {
+          {...register("discount", {
             required: "Discount is required",
             validate: (value) => {
               Number(value) >= Number(getValues("regularPrice")) ||
@@ -90,18 +90,18 @@ const CreateRoomForm = () => {
 
       <FormRow
         label="Description for website"
-        error={errors?.Description?.message}
+        error={errors?.description?.message}
       >
         <Textarea
           id="description"
           defaulValue=""
-          {...register("Description", {
+          {...register("description", {
             required: "Description is required",
           })}
         />
       </FormRow>
 
-      <FormRow label="Room photo" error={errors?.Discount?.message}>
+      <FormRow label="Room photo" error={errors?.image?.message}>
         <FileInput
           id="image"
           type="file"
@@ -122,7 +122,7 @@ const CreateRoomForm = () => {
           variation="primary"
           type="submit"
         >
-          {isCreating ? "Is creating" : "Add room"}
+          {isCreating ? "Is creating..." : "Add room"}
         </Button>
       </FormRow>
     </Form>
