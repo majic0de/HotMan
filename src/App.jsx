@@ -15,6 +15,7 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <RouterProvider router={router} />
+      <Toaster />
     </QueryClientProvider>
   );
 }
