@@ -6,7 +6,7 @@ import RoomCard from "./RoomCard";
 const RoomCardsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
-  gap: 0.5rem;
+  gap: 1.5rem;
   font-family: inherit;
 `;
 

@@ -28,6 +28,15 @@ const RoomCardAction = styled.div`
   background-color: var(--color-grey-100);
 `;
 
+const Price = styled.div`
+  font-weight: 600;
+`;
+
+const Discount = styled.div`
+  font-weight: 500;
+  color: var(--color-green-700);
+`;
+
 const RoomCard = ({
   room: {
     id: roomId,
@@ -46,8 +55,10 @@ const RoomCard = ({
       <RoomCardContent>
         <Heading as="h2">{name}</Heading>
         <div>Maximum capacity: {maxCapacity}</div>
-        <div>Regular price: {formatCurrency(regularPrice)}</div>
-        <div>Discount: {formatCurrency(discount)}</div>
+        <Price>Regular price: {formatCurrency(regularPrice)}</Price>
+        <Discount>
+          Discount: {discount ? formatCurrency(discount) : "-"}
+        </Discount>
         <div>Description: {description}</div>
       </RoomCardContent>
       <RoomCardAction>
