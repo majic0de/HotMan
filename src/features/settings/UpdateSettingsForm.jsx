@@ -71,9 +71,6 @@ const UpdateSettingsForm = ({ settings }) => {
       </FormRow>
 
       <FormRow>
-        <Button size="medium" variation="secondary" type="reset">
-          Cancel
-        </Button>
         <Button size="medium" variation="primary" type="submit">
           Update settings
         </Button>
