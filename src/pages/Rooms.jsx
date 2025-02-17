@@ -1,11 +1,16 @@
+import { useState } from "react";
+
 import Heading from "../ui/Heading";
 import VStack from "../ui/VStack";
 import HStack from "../ui/HStack";
+import Button from "../ui/Button";
 
 import RoomsGrid from "../features/rooms/RoomsGrid";
-import AddRoom from "../features/rooms/AddRoom";
+import CreateRoomForm from "../features/rooms/CreateRoomForm";
 
 const Rooms = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   return (
     <>
       <HStack>
@@ -14,7 +19,15 @@ const Rooms = () => {
       </HStack>
       <VStack>
         <RoomsGrid />
-        <AddRoom />
+        <Button
+          size="large"
+          variation="primary"
+          onClick={() => setIsOpenModal((show) => !show)}
+        >
+          Add new Room
+        </Button>
+
+        {isOpenModal && <CreateRoomForm />}
       </VStack>
     </>
   );
