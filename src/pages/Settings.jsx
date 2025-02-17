@@ -1,8 +1,17 @@
+import UpdateSettingsForm from "../features/settings/updateSettingsForm";
+import useSettings from "../features/settings/useSettings";
+import Heading from "../ui/Heading";
+import Spinner from "../ui/Spinner";
+import VStack from "../ui/VStack";
+
 const Settings = () => {
+  const { isPending, settings } = useSettings();
+
   return (
-    <div>
-      <h1>Settings</h1>
-    </div>
+    <VStack>
+      <Heading as="h1">Settings</Heading>
+      {isPending ? <Spinner /> : <UpdateSettingsForm settings={settings} />}
+    </VStack>
   );
 };
 
