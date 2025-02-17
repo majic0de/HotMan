@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+
 import Heading from "../../ui/Heading";
 import Button from "../../ui/Button";
+
 import useDeleteRoom from "./useDeleteRoom";
+import { formatCurrency } from "../../utils/helpers";
 
 const RoomCardStyled = styled.div`
   display: flex;
@@ -43,8 +46,8 @@ const RoomCard = ({
       <RoomCardContent>
         <Heading as="h2">{name}</Heading>
         <div>Maximum capacity: {maxCapacity}</div>
-        <div>Regular price: {regularPrice}</div>
-        <div>Discount: {discount}</div>
+        <div>Regular price: {formatCurrency(regularPrice)}</div>
+        <div>Discount: {formatCurrency(discount)}</div>
         <div>Description: {description}</div>
       </RoomCardContent>
       <RoomCardAction>
