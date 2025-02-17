@@ -24,7 +24,7 @@ export async function createRoom(newRoom) {
 
   if (error) {
     console.error("Error creating rooms", error);
-    throw new Error("Room could not be ceated");
+    throw new Error("Room could not be created");
   }
 
   // 2. Upload image
@@ -39,6 +39,20 @@ export async function createRoom(newRoom) {
     throw new Error(
       "Room inage could not be uploaded and room was not created"
     );
+  }
+
+  return data;
+}
+
+export async function deleteRoom(roomId) {
+  const { data, error } = await supabase
+    .from("rooms")
+    .delete()
+    .eq("id", roomId);
+
+  if (error) {
+    console.error("Error deleting rooms", error);
+    throw new Error("Room could not be deleted");
   }
 
   return data;
