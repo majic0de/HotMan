@@ -8,7 +8,7 @@ const useDeleteRoom = () => {
   const { mutate: deleteRoom, isPending: isDeleting } = useMutation({
     mutationFn: deleteRoomApi,
     onSuccess: () => {
-      toast.success("Room created successfully");
+      toast.success("Room deleted successfully");
       queryClient.invalidateQueries({
         queryKey: ["rooms"],
       });
