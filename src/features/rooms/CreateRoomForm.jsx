@@ -1,14 +1,13 @@
 import { Form } from "react-router-dom";
-import { toast } from "react-hot-toast";
-
 import { useForm } from "react-hook-form";
+
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Textarea from "../../ui/Textarea";
 import FileInput from "../../ui/FileInput";
 import Button from "../../ui/Button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createRoom } from "../../services/apiRooms";
+
+import useCreateRoom from "./useCreateRoom";
 
 const CreateRoomForm = () => {
   const {
@@ -19,22 +18,10 @@ const CreateRoomForm = () => {
     reset,
   } = useForm();
 
-  const queryClient = useQueryClient();
-
-  const { mutate, isPending: isCreating } = useMutation({
-    mutationFn: createRoom,
-    onSuccess: () => {
-      toast.success("Room created successfully");
-      queryClient.invalidateQueries({
-        queryKey: ["rooms"],
-      });
-      reset();
-    },
-    onError: (err) => toast.error(err.message),
-  });
+  const { createRoom, isCreating } = useCreateRoom();
 
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    createRoom({ ...data, image: data.image[0] }, { onSuccess: () => reset() });
   }
 
   return (
