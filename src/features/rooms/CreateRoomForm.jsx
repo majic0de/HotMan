@@ -43,6 +43,7 @@ const CreateRoomForm = () => {
         <Input
           type="text"
           id="name"
+          disabled={isCreating}
           {...register("name", {
             required: "Room name is required",
           })}
@@ -53,6 +54,7 @@ const CreateRoomForm = () => {
         <Input
           type="number"
           id="maxCapacity"
+          disabled={isCreating}
           {...register("maxCapacity", {
             required: "Maximum capacity is required",
             min: {
@@ -67,6 +69,7 @@ const CreateRoomForm = () => {
         <Input
           type="number"
           id="regularPrice"
+          disabled={isCreating}
           {...register("regularPrice", {
             required: "Regular price is required",
             min: { value: 1, message: "Minimum price is 1" },
@@ -78,6 +81,7 @@ const CreateRoomForm = () => {
         <Input
           type="text"
           id="discount"
+          disabled={isCreating}
           {...register("discount", {
             required: "Discount is required",
             validate: (value) => {
@@ -95,6 +99,7 @@ const CreateRoomForm = () => {
         <Textarea
           id="description"
           defaulValue=""
+          disabled={isCreating}
           {...register("description", {
             required: "Description is required",
           })}
@@ -106,6 +111,7 @@ const CreateRoomForm = () => {
           id="image"
           type="file"
           accept="image/*"
+          disabled={isCreating}
           {...register("image", {
             required: "Room photo is required",
           })}
@@ -113,7 +119,12 @@ const CreateRoomForm = () => {
       </FormRow>
 
       <FormRow>
-        <Button size="medium" type="reset" variation="secondary">
+        <Button
+          size="medium"
+          type="reset"
+          variation="secondary"
+          disabled={isCreating}
+        >
           Cancel
         </Button>
         <Button
