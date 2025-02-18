@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { PropTypes } from "prop-types";
 
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
@@ -9,7 +10,7 @@ import Form from "../../ui/Form";
 
 import useCreateRoom from "./useCreateRoom";
 
-const CreateRoomForm = () => {
+const CreateRoomForm = ({ onCloseModal }) => {
   const {
     register,
     handleSubmit,
@@ -21,11 +22,22 @@ const CreateRoomForm = () => {
   const { createRoom, isCreating } = useCreateRoom();
 
   function onSubmit(data) {
-    createRoom({ ...data, image: data.image[0] }, { onSuccess: () => reset() });
+    createRoom(
+      { ...data, image: data.image[0] },
+      {
+        onSuccess: () => {
+          reset();
+          onCloseModal?.();
+        },
+      }
+    );
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow label="Room name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -111,6 +123,7 @@ const CreateRoomForm = () => {
           type="reset"
           variation="secondary"
           disabled={isCreating}
+          onClick={() => onCloseModal?.()}
         >
           Cancel
         </Button>
@@ -125,6 +138,10 @@ const CreateRoomForm = () => {
       </FormRow>
     </Form>
   );
+};
+
+CreateRoomForm.propTypes = {
+  onCloseModal: PropTypes.func,
 };
 
 export default CreateRoomForm;
