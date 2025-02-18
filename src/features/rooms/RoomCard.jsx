@@ -6,6 +6,8 @@ import Button from "../../ui/Button";
 
 import useDeleteRoom from "./useDeleteRoom";
 import { formatCurrency } from "../../utils/helpers";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import Modal from "../../ui/Modal";
 
 const RoomCardStyled = styled.div`
   display: flex;
@@ -62,14 +64,20 @@ const RoomCard = ({
         <div>Description: {description}</div>
       </RoomCardContent>
       <RoomCardAction>
-        <Button
-          size="small"
-          variation="primary"
-          disabled={isDeleting}
-          onClick={() => deleteRoom(roomId)}
-        >
-          {isDeleting ? "Is deleting..." : "Delete"}
-        </Button>
+        <Modal>
+          <Modal.Open opens="delete-room">
+            <Button size="small" variation="primary">
+              Delete
+            </Button>
+          </Modal.Open>
+          <Modal.Window name="delete-room">
+            <ConfirmDelete
+              resource={"room"}
+              onConfirm={() => deleteRoom(roomId)}
+              disabled={isDeleting}
+            />
+          </Modal.Window>
+        </Modal>
       </RoomCardAction>
     </RoomCardStyled>
   );
