@@ -2,7 +2,7 @@ import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
 import CreateRoomForm from "./CreateRoomForm";
 
-const AddCabin = () => {
+const AddRoom = () => {
   return (
     <Modal>
       <Modal.Open opens="room-form">
@@ -17,4 +17,4 @@ const AddCabin = () => {
   );
 };
 
-export default AddCabin;
+export default AddRoom;
