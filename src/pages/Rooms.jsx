@@ -2,8 +2,8 @@ import Heading from "../ui/Heading";
 import VStack from "../ui/VStack";
 import HStack from "../ui/HStack";
 
-import RoomsGrid from "../features/rooms/RoomsGrid";
 import AddRoom from "../features/rooms/AddRoom";
+import RoomTable from "../features/rooms/RoomTable";
 
 const Rooms = () => {
   return (
@@ -13,7 +13,7 @@ const Rooms = () => {
         <p>Filter / Sort</p>
       </HStack>
       <VStack>
-        <RoomsGrid />
+        <RoomTable />
         <AddRoom />
       </VStack>
     </>
