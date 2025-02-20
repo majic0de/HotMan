@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";

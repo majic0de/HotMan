@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { useUser } from "../features/authentication/useUser";

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { createPortal } from "react-dom";
 import { HiX } from "react-icons/hi";
 
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 import useOutsideClick from "../hooks/useOutsideClick";
 

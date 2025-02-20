@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
 
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
