@@ -1,8 +1,6 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
-import GlobalStyles from "../styles/GlobalStyles";
-
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -29,7 +27,6 @@ const Container = styled.div`
 function AppLayout() {
   return (
     <StyledAppLayout>
-      <GlobalStyles />
       <Header />
       <Sidebar />
       <Main>
