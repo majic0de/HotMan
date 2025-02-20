@@ -13,7 +13,7 @@ export function useLogin() {
       console.log(data.user);
       queryClient.setQueriesData(["user"], data.user);
 
-      navigate("/dashboard");
+      navigate("/dashboard", { replace: true });
     },
     onError: (err) => {
       console.error(err);
