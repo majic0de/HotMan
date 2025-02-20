@@ -25,7 +25,10 @@ import { ErrorBoundary } from "react-error-boundary";
 const router = createBrowserRouter([
   {
     element: (
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => window.location.replace("/")}
+      >
         <ProtectedRoute>
           <AppLayout />
         </ProtectedRoute>
