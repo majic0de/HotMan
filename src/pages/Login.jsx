@@ -1,8 +1,30 @@
+import styled from "styled-components";
+import LoginForm from "../features/authentication/LoginForm";
+import Logo from "../ui/Logo";
+import Heading from "../ui/Heading";
+
+const LoginLayout = styled.main`
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 48rem;
+  align-content: center;
+  justify-content: center;
+  gap: 3.2rem;
+  background-color: var(--color-grey-50);
+`;
+
+const HeadingCenter = styled(Heading)`
+  text-align: center;
+  font-size: 3rem;
+`;
+
 const Login = () => {
   return (
-    <div>
-      <h1>Login</h1>
-    </div>
+    <LoginLayout>
+      <Logo />
+      <HeadingCenter as="h4">Log in to your account</HeadingCenter>
+      <LoginForm />
+    </LoginLayout>
   );
 };
 

@@ -16,10 +16,16 @@ import Login from "./pages/Login";
 import AppLayout from "./ui/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
 import { Toaster } from "react-hot-toast";
+import GlobalStyles from "./styles/GlobalStyles";
+import ProtectedRoute from "./ui/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    element: (
+      <ProtectedRoute>
+        <AppLayout />
+      </ProtectedRoute>
+    ),
     children: [
       { path: "/", element: <Navigate to="/dashboard" replace /> },
       { path: "/dashboard", element: <Dashboard /> },
@@ -46,6 +52,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
+      <GlobalStyles />
       <RouterProvider router={router} />
       <Toaster />
     </QueryClientProvider>
