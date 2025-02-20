@@ -2,11 +2,6 @@
 import styled from "styled-components";
 
 const StyledFormRow = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
-
   padding: 1.2rem 0;
 
   &:first-child {
@@ -17,15 +12,28 @@ const StyledFormRow = styled.div`
     padding-bottom: 0;
   }
 
-  &:not(:last-child) {
-    border-bottom: 1px solid var(--color-grey-100);
-  }
-
   &:has(button) {
     display: flex;
     justify-content: flex-end;
     gap: 1.2rem;
   }
+`;
+
+const HFormRow = styled(StyledFormRow)`
+  display: grid;
+  align-items: center;
+  grid-template-columns: 24rem 1fr 1.2fr;
+  gap: 1.2rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--color-grey-100);
+  }
+`;
+
+const VFormRow = styled(StyledFormRow)`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 `;
 
 const Label = styled.label`
@@ -37,13 +45,22 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, error, children }) {
+function FormRow({ label, error, children, orientation = "horizontal" }) {
+  if (orientation == "vertical")
+    return (
+      <VFormRow>
+        {label && <Label htmlFor={children.props.id}>{label}</Label>}
+        {children}
+        {error && <Error>{error}</Error>}
+      </VFormRow>
+    );
+
   return (
-    <StyledFormRow>
+    <HFormRow>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}
       {children}
       {error && <Error>{error}</Error>}
-    </StyledFormRow>
+    </HFormRow>
   );
 }
 
