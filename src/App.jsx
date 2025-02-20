@@ -19,13 +19,17 @@ import { Toaster } from "react-hot-toast";
 import GlobalStyles from "./styles/GlobalStyles";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import ErrorFallback from "./ui/ErrorFallback";
+import { ErrorBoundary } from "react-error-boundary";
 
 const router = createBrowserRouter([
   {
     element: (
-      <ProtectedRoute>
-        <AppLayout />
-      </ProtectedRoute>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ProtectedRoute>
+          <AppLayout />
+        </ProtectedRoute>
+      </ErrorBoundary>
     ),
     children: [
       { path: "/", element: <Navigate to="/dashboard" replace /> },
